@@ -1,7 +1,7 @@
 // 20240429082733
 // https://restcountries.com/v3.1/name/iran?fullText=true
 
-export const countryDetails = [
+export const details = [
     {
       "name": {
         "common": "Iran",
