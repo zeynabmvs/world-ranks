@@ -24,3 +24,18 @@
   }
 }
 
+body {
+  @apply bg-black text-slate-100 text-base;
+}
+
+
+/* When the checkbox is checked, add a blue background */
+
+.input-wrapper input:checked ~ .checkmark {
+  @apply bg-primary outline-primary border-0;
+}
+
+/* Show the checkmark when checked */
+.input-wrapper input:checked ~ .checkmark:after {
+  @apply block;
+}
