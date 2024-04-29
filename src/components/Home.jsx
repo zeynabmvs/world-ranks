@@ -1,3 +1,4 @@
+import CountriesList from "./CountriesList";
 import Search from "./Search";
 import Sidebar from "./Sidebar";
 
@@ -11,7 +12,7 @@ const Home = () => {
       </div>
       <div className="flex flex-col md:flex-row gap-6">
         <Sidebar />
-        {/* <CountriesList /> */}
+        <CountriesList />
       </div>
     </div>
   );

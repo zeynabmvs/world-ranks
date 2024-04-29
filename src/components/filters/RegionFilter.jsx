@@ -1,4 +1,4 @@
-import REGIONOPTIONS from "../../constants/regionOptions.js";
+import {REGIONOPTIONS} from "../../constants/regionOptions.js";
 
 const RegionFilter = () => {
 
