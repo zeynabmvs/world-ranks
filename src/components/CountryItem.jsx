@@ -23,6 +23,12 @@ const CountryItem = ({country}) => {
     <td className="py-3">
       {country.area.toLocaleString()}
     </td>
+    {/* <td className="py-3">
+      {country.independent && '**'}
+    </td>
+    <td className="py-3">
+      {country.unMember && '**'}
+    </td> */}
     <td className="py-3 hidden md:block">
       {country.region}
     </td>

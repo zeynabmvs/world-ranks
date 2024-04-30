@@ -4,12 +4,10 @@ export const initialState = {
   searchKeyword: "",
   regions: [],
   independent: true,
-  unMember: false,
+  unMember: true,
 };
 
 export const stateReducer = (state, action) => {
-  console.log("reducer called: ", action.type);
-
   switch (action.type) {
     case "setCountries":
       return { ...state, countries: action.payload };
@@ -42,12 +40,6 @@ export const stateReducer = (state, action) => {
         ...state,
         unMember: action.payload,
       };
-
-    // case "setFilteredCountries":
-    //   return { ...state, filteredCountries: action.payload };
-
-    // case "doSort":
-    //   return { ...state, filteredCountries: action.payload };
 
     default:
       return state;

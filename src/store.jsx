@@ -1,6 +1,12 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useReducer } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useReducer,
+} from "react";
 import { initialState, stateReducer } from "./stateReducer";
-
 
 const CountriesContext = createContext(null);
 
@@ -21,20 +27,30 @@ const useCountriesSource = () => {
     fetchCountries();
   }, []);
 
-  const setSearch = useCallback((keyword)=> {
-    dispatch({type: "setSearchKeyword", payload: keyword})
-  }, [])
+  const setSearch = useCallback((keyword) => {
+    dispatch({ type: "setSearchKeyword", payload: keyword });
+  }, []);
 
-  const filteredCountries = useMemo(()=>{
-    // TODO: search by multiple fields
-    if (state.searchKeyword !== "") {
-        return state.countries.filter((item) => item.name.common.toLowerCase().includes(state.searchKeyword))
-    } else {
-        return state.countries
-    }
-  }, [state.countries, state.searchKeyword, setSearch])
+  const filteredCountries = useMemo(() => {
+    return state.countries.filter(
+      (item) =>
+        (state.searchKeyword !== ""
+          ? item.name.common.toLowerCase().includes(state.searchKeyword)
+          : true) &&
+        (state.regions.length === 0 ||
+          state.regions.some((x) => item.region.toLowerCase() === x)) &&
+        item.independent === state.independent &&
+        item.unMember === state.unMember
+    );
+  }, [
+    state.countries,
+    state.searchKeyword,
+    state.regions,
+    state.independent,
+    state.unMember,
+  ]);
 
-  const sortedCountries = useMemo(()=>{
+  const sortedCountries = useMemo(() => {
     function getKey(obj, keyPath) {
       return keyPath.split(".").reduce((acc, curr) => {
         if (acc && acc[curr]) {
@@ -57,14 +73,12 @@ const useCountriesSource = () => {
       }
       return 0;
     });
+  }, [filteredCountries, state.sortBy]);
 
+  console.log("filteredCountries", filteredCountries);
+  console.log("sortedCountries", sortedCountries);
 
-  }, [filteredCountries, state.sortBy])
-
-  console.log("filteredCountries", filteredCountries)
-  console.log("sortedCountries", sortedCountries)
-
-  return { state, countriesList: sortedCountries , dispatch, setSearch };
+  return { state, countriesList: sortedCountries, dispatch, setSearch };
 };
 
 export const CountriesContextProvider = ({ children }) => {

@@ -20,7 +20,7 @@ function CountriesList() {
         </tr>
       </thead>
       <tbody>
-        {countries.map((country) => (
+        {countries?.map((country) => (
           <CountryItem key={country.cca2} country={country} />
         ))}
       </tbody>
