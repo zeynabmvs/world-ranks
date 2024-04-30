@@ -1,17 +1,18 @@
-import {REGIONOPTIONS} from "../../constants/regionOptions.js";
+import { REGIONOPTIONS } from "../../constants/regionOptions.js";
+import { useCountries } from "../../store.jsx";
 
 const RegionFilter = () => {
+  const { state, dispatch } = useCountries();
 
-  const isRegionActive = () => {
-    //TODO: write later
-    return true;
+  const isRegionActive = (key) => {
+    return state.regions.includes(key) ? true : false;
   };
 
   const handleClick = (region, isRegionActive) => {
-    //TODO: write later
-    console.log("clicked on filter");
+    isRegionActive
+      ? dispatch({ type: "removeRegion", payload: region.key })
+      : dispatch({ type: "addRegion", payload: region.key });
   };
-
   return (
     <div>
       <label

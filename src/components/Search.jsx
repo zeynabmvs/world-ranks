@@ -1,6 +1,10 @@
 import searchIcon from "/images/Search.svg";
+import { useCountries } from "../store.jsx";
 
 const Search = () => {
+  const { state, setSearch } = useCountries();
+  const searchKeyword = state.searchKeyword
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -13,8 +17,10 @@ const Search = () => {
         </span>
         <input
           type="text"
-          placeholder="Search by Name, Region, Subregion"
+          placeholder="Search by Name"
           className="bg-slate-300 rounded-xl p-3 pl-10 text-slate-100 placeholder-slate-200 text-sm w-full md:w-[340px] w-600"
+          value={searchKeyword}
+          onChange= {(e)=>setSearch(e.target.value)}
         ></input>
       </div>
     </form>

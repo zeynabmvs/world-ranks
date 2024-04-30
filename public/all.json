@@ -1,7 +1,4 @@
-// 20240429082601
-// https://restcountries.com/v3.1/all
-
-export const countriesAllData = [
+[
     {
       "name": {
         "common": "Moldova",

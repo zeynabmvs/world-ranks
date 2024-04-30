@@ -18,10 +18,10 @@ const CountryItem = ({country}) => {
       {country.name.common}
     </td>
     <td className="py-3">
-      {country.population}
+      {country.population.toLocaleString()}
     </td>
     <td className="py-3">
-      {country.area}
+      {country.area.toLocaleString()}
     </td>
     <td className="py-3 hidden md:block">
       {country.region}

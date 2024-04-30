@@ -1,11 +1,12 @@
-import { useState } from "react";
-import {countriesAllData} from "../data/all.js";
+import { useCountries } from "../store.jsx";
 import CountryItem from "./CountryItem.jsx";
 
 function CountriesList() {
-  const [countries, setCountries] = useState(countriesAllData);
+  const { countriesList } = useCountries();
 
-  return (
+  const countries = countriesList;
+
+  return countries && countries.length ? (
     <table className="w-full">
       <thead className="border-b border-slate-300">
         <tr className="text-sm text-slate-200 text-center">
@@ -19,15 +20,13 @@ function CountriesList() {
         </tr>
       </thead>
       <tbody>
-        {countries && countries.length ? (
-          countries.map((country) => (
-            <CountryItem key={country.cca2} country={country} />
-          ))
-        ) : (
-          <div>No countries Found</div>
-        )}
+        {countries.map((country) => (
+          <CountryItem key={country.cca2} country={country} />
+        ))}
       </tbody>
     </table>
+  ) : (
+    <p>No countries Found</p>
   );
 }
 export default CountriesList;

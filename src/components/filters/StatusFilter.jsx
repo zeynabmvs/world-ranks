@@ -1,6 +1,8 @@
-import React from "react";
+import { useCountries } from "../../store";
 
 function StatusFilter() {
+  const { state, dispatch } = useCountries();
+
   return (
     <>
       <span className="text-sm text-slate-200 block mb-2">Status</span>
@@ -9,10 +11,10 @@ function StatusFilter() {
           Independant
           <input
             type="checkbox"
-            // checked={state.independent}
-            // onChange={(e) =>
-            //   dispatch({ type: "changeDependant", payload: e.target.checked })
-            // }
+            checked={state.independent}
+            onChange={(e) =>
+              dispatch({ type: "changeDependant", payload: e.target.checked })
+            }
             className="absolute opacity-0 left-0 top-0 size-0"
           />
           <span className="checkmark absolute top-0 left-0 bg-black rounded-sm border-2 border-slate-200 size-6 after:hidden after:absolute after:top-0 after:left-0 after:content-[url('./images/Done_round.svg')]"></span>
@@ -22,10 +24,10 @@ function StatusFilter() {
           Member of the United Nations
           <input
             type="checkbox"
-            // checked={state.unMember}
-            // onChange={(e) =>
-            //   dispatch({ type: "changeUnMember", payload: e.target.checked })
-            // }
+            checked={state.unMember}
+            onChange={(e) =>
+              dispatch({ type: "changeUnMember", payload: e.target.checked })
+            }
             className="absolute opacity-0 left-0 top-0 size-0"
           />
           <span className="checkmark absolute top-0 left-0 bg-black rounded-sm border-2 border-slate-200 size-6 after:hidden after:absolute after:top-0 after:left-0 after:content-[url('./images/Done_round.svg')]"></span>
