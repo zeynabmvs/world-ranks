@@ -1,11 +1,15 @@
 import { useCountries } from "../store.jsx";
 import CountryItem from "./CountryItem.jsx";
+import Loading from "./Loading"
 
 function CountriesList() {
-  const { countriesList } = useCountries();
+  const { countriesList, isPending } = useCountries();
 
   const countries = countriesList;
 
+  if (isPending) {
+    return <Loading />
+  } 
   return countries && countries.length ? (
     <table className="w-full">
       <thead className="border-b border-slate-300">

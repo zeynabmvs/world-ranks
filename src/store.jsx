@@ -1,8 +1,8 @@
+import { useQuery } from "@tanstack/react-query";
 import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useReducer,
 } from "react";
@@ -13,26 +13,24 @@ const CountriesContext = createContext(null);
 const useCountriesSource = () => {
   const [state, dispatch] = useReducer(stateReducer, initialState);
 
-  async function fetchCountries() {
-    const response = await fetch("./all.json");
-    if (response.ok) {
+  const { data: countries, isPending } = useQuery({
+    queryKey: ["countries"],
+    queryFn: async function fetchCountries() {
+      const response = await fetch("./all.json");
       const result = await response.json();
-      dispatch({ type: "setCountries", payload: result });
-    } else {
-      dispatch({ type: "setCountries", payload: [] });
-    }
-  }
-
-  useEffect(() => {
-    fetchCountries();
-  }, []);
+      return result;
+    },
+  });
+  console.log(countries)
 
   const setSearch = useCallback((keyword) => {
     dispatch({ type: "setSearchKeyword", payload: keyword });
   }, []);
 
   const filteredCountries = useMemo(() => {
-    return state.countries.filter(
+    if (isPending || !countries) return []
+
+    return countries.filter(
       (item) =>
         (state.searchKeyword !== ""
           ? item.name.common.toLowerCase().includes(state.searchKeyword)
@@ -43,7 +41,8 @@ const useCountriesSource = () => {
         item.unMember === state.unMember
     );
   }, [
-    state.countries,
+    isPending,
+    countries,
     state.searchKeyword,
     state.regions,
     state.independent,
@@ -75,10 +74,14 @@ const useCountriesSource = () => {
     });
   }, [filteredCountries, state.sortBy]);
 
-  console.log("filteredCountries", filteredCountries);
-  console.log("sortedCountries", sortedCountries);
-
-  return { state, countriesList: sortedCountries, dispatch, setSearch };
+  return {
+    state,
+    isPending, 
+    countries, 
+    countriesList: sortedCountries,
+    dispatch,
+    setSearch,
+  };
 };
 
 export const CountriesContextProvider = ({ children }) => {

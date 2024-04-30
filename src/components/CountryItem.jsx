@@ -6,7 +6,7 @@ const CountryItem = ({country}) => {
     <td className="py-3"> <img
           src={country?.flags?.svg}
           className="w-[50px] h-[38px] mx-auto rounded-lg"></img>
-      <Link to={`/country/${country?.name?.common}`}
+      <Link to={`/country/${country.cca2}`}
         className="absolute inset-0">
         <span className="sr-only">
           View more information about {country.name.common}

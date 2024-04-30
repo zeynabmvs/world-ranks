@@ -8,13 +8,11 @@ const Neighbours = ({ code }) => {
 
   return neighbours.length ? (
     <ul className="flex gap-4 flex-wrap">
-      {neighbours.map((item) => {
-        console.log(item);
+      {neighbours.map((item, index) => {
         return (
-          <li key={item?.cca2} className="w-[80px] relative">
+          <li key={index} className="w-[80px]">
             <Link
               to={`/country/${item?.name.common}`}
-              className="absolute inset-0"
             >
               <img src={item?.flags.svg} className="rounded-lg mb-3 " />
               <h3 className="text-sm">{item?.name.common}</h3>

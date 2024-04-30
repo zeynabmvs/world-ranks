@@ -4,7 +4,7 @@ function StatusFilter() {
   const { state, dispatch } = useCountries();
 
   return (
-    <>
+    <div>
       <span className="text-sm text-slate-200 block mb-2">Status</span>
       <div className="flex gap-3 flex-col">
         <label className="input-wrapper cursor-pointer relative pl-9">
@@ -32,8 +32,8 @@ function StatusFilter() {
           />
           <span className="checkmark absolute top-0 left-0 bg-black rounded-sm border-2 border-slate-200 size-6 after:hidden after:absolute after:top-0 after:left-0 after:content-[url('./images/Done_round.svg')]"></span>
         </label>
-      </div>{" "}
-    </>
+      </div>
+    </div>
   );
 }
 

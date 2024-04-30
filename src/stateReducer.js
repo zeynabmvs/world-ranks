@@ -1,5 +1,4 @@
 export const initialState = {
-  countries: [],
   sortBy: "area",
   searchKeyword: "",
   regions: [],
@@ -9,8 +8,6 @@ export const initialState = {
 
 export const stateReducer = (state, action) => {
   switch (action.type) {
-    case "setCountries":
-      return { ...state, countries: action.payload };
     case "changeSort":
       return { ...state, sortBy: action.payload };
     case "setSearchKeyword":

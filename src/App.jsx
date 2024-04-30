@@ -12,7 +12,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/country/:name/" element={<CountryDetails />}></Route>
+          <Route path="/country/:code/" element={<CountryDetails />}></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </CountriesContextProvider>
