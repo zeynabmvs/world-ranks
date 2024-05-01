@@ -5,8 +5,8 @@ const CountriesCount = () => {
 
   return (
     <p className="text-base text-slate-200 mb-3 md:mb-0">
-      Found {countriesList?.length} countries
-    </p>
+     {countriesList?.length > 0 && `Found  ${countriesList?.length} countries`} 
+      </p>
   );
 };
 export default CountriesCount;
