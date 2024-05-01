@@ -5,9 +5,9 @@ import {
   useContext,
   useMemo,
   useReducer,
+  useState,
 } from "react";
 import { initialState, stateReducer } from "./stateReducer";
-
 const CountriesContext = createContext(null);
 
 const useCountriesSource = () => {
@@ -32,19 +32,26 @@ const useCountriesSource = () => {
 
     const keyword = state.searchKeyword.toLowerCase();
 
-    return countries.filter(
+    let filtered = countries.filter(
       (item) =>
         (state.searchKeyword !== ""
-          ? (item.name.common.toLowerCase().includes(keyword) ||
-            item.region.toLowerCase().includes(keyword) || 
+          ? item.name.common.toLowerCase().includes(keyword) ||
+            item.region.toLowerCase().includes(keyword) ||
             item?.subregion?.toLowerCase().includes(keyword)
-          )
           : true) &&
         (state.regions.length === 0 ||
-          state.regions.some((x) => item.region.toLowerCase() === x)) &&
-        item.independent === state.independent &&
-        item.unMember === state.unMember
+          state.regions.some((x) => item.region.toLowerCase() === x))
     );
+
+    if (state.independent) {
+      filtered = filtered.filter((item) => item.independent);
+    }
+
+    if (state.unMember) {
+      filtered = filtered.filter((item) => item.unMember);
+    }
+
+    return filtered;
   }, [
     isPending,
     countries,
