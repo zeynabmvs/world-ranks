@@ -20,6 +20,7 @@ function CountriesList() {
           <th className="py-3">Area (km²)</th>
           {/* <th className="py-3">Independent</th>
           <th className="py-3">un member</th> */}
+          <th className="py-3">subregion</th>
           <th className="py-3 hidden md:table-cell">Region</th>
         </tr>
       </thead>

@@ -21,19 +21,24 @@ const useCountriesSource = () => {
       return result;
     },
   });
-  console.log(countries)
+  console.log(countries);
 
   const setSearch = useCallback((keyword) => {
     dispatch({ type: "setSearchKeyword", payload: keyword });
   }, []);
 
   const filteredCountries = useMemo(() => {
-    if (isPending || !countries) return []
+    if (isPending || !countries) return [];
+
+    const keyword = state.searchKeyword.toLowerCase();
 
     return countries.filter(
       (item) =>
         (state.searchKeyword !== ""
-          ? item.name.common.toLowerCase().includes(state.searchKeyword)
+          ? (item.name.common.toLowerCase().includes(keyword) ||
+            item.region.toLowerCase().includes(keyword) || 
+            item?.subregion?.toLowerCase().includes(keyword)
+          )
           : true) &&
         (state.regions.length === 0 ||
           state.regions.some((x) => item.region.toLowerCase() === x)) &&
@@ -76,8 +81,8 @@ const useCountriesSource = () => {
 
   return {
     state,
-    isPending, 
-    countries, 
+    isPending,
+    countries,
     countriesList: sortedCountries,
     dispatch,
     setSearch,

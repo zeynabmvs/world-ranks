@@ -17,7 +17,7 @@ const Search = () => {
         </span>
         <input
           type="text"
-          placeholder="Search by Name"
+          placeholder="Search by Name, Region, Subregion"
           className="bg-slate-300 rounded-xl p-3 pl-10 text-slate-100 placeholder-slate-200 text-sm w-full md:w-[340px] w-600"
           value={searchKeyword}
           onChange= {(e)=>setSearch(e.target.value)}
