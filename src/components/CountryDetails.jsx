@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
-import { useCountries } from "../store.jsx";
-import Loading from "./Loading.jsx";
-import Neighbours from "./Neighbours.jsx";
+import { useCountries } from "../store";
+import Loading from "./Loading";
+import Neighbours from "./Neighbours";
 
 const CountryDetails = () => {
   const { countries, isPending } = useCountries();
