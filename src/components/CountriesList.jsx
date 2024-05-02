@@ -6,10 +6,13 @@ function CountriesList() {
 
   const countries = countriesList;
   //TODO: handle error fron react Query
-  
-  const skeletons = Array(4).fill(
-    <CountryItemSkeleton key={Math.random() * 10} />
-  ); // Add unique keys
+
+  let skeletons= [];
+  for (let i=0; i<4;i++ ) {
+    skeletons.push(<CountryItemSkeleton key={i} />)
+  }
+
+  console.log(skeletons)
 
   return (
     <table className="w-full">
