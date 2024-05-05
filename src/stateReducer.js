@@ -1,5 +1,5 @@
 export const initialState = {
-  sortBy: "area",
+  sortBy: "population",
   searchKeyword: "",
   regions: [],
   independent: true,

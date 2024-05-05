@@ -29,7 +29,6 @@ const useCountriesSource = () => {
       return result;
     },
   });
-  console.log(countries);
 
   const setSearch = useCallback((keyword) => {
     dispatch({ type: "setSearchKeyword", payload: keyword });
@@ -66,7 +65,7 @@ const useCountriesSource = () => {
     state.searchKeyword,
     state.regions,
     state.independent,
-    state.unMember,
+    state.unMember
   ]);
 
   const sortedCountries = useMemo(() => {
@@ -101,10 +100,11 @@ const useCountriesSource = () => {
     return sortedCountries?.slice(indexOfFirstPost, indexOfLastPost);
   }, [postsPerPage, currentPage, sortedCountries] );
 
+
   return {
     state,
     isPending,
-    countries,
+    countries: countries || [],
     countriesList: sortedCountries,
     currentPage,
     postsPerPage,
@@ -113,7 +113,8 @@ const useCountriesSource = () => {
     setSearch,
     pagedCountries,
     filteredCountries,
-    isPreviousData
+    isPreviousData,
+    sortedCountries
   };
 };
 

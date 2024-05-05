@@ -7,7 +7,6 @@ const CountryDetails = () => {
   const { countries, isPending } = useCountries();
   const { code } = useParams();
 
-  console.log(code);
   if (!countries || isPending) {
     return <Loading />;
   }
@@ -73,7 +72,7 @@ const CountryDetails = () => {
           </div>
           <div className="border-t border-slate-300 flex justify-between px-[20px] py-6 w-full text-base flex-col ">
             <p className="text-slate-200 mb-6">Neighbouring Countries</p>
-            <Neighbours code={countryData?.cca2} />
+            <Neighbours borders={countryData?.borders} />
           </div>
         </div>
       ) : (
