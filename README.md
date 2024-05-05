@@ -4,7 +4,7 @@ This project is a solution to the "World Rank" challenge on the DevChallenges we
 
 Challenge Link: https://devchallenges.io/challenge/country-page
 
-Live site: 
+Live site: https://zeynabmvs.github.io/world-ranks/
 
 Github Repo: https://github.com/zeynabmvs/world-ranks
 
