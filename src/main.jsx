@@ -15,9 +15,10 @@ const client = new QueryClient({
     },
   },
 });
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <QueryClientProvider client={client}>
-    <BrowserRouter>
+    <BrowserRouter basename="/world-ranks">
       <SkeletonTheme baseColor="#6C727F" highlightColor="#4A5567" duration={2}>
         {/* <React.StrictMode> */}
         <App />

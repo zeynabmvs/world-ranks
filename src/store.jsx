@@ -16,9 +16,9 @@ const useCountriesSource = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, SetPostsPerPage] = useState(25);
 
-  function handlePagination(currentPage) {
+  const handlePagination = useCallback((currentPage)=>{
     setCurrentPage(currentPage);
-  }
+  }, [])
 
   const { data: countries, isPending, isError } = useQuery({
     queryKey: ["countries"],
