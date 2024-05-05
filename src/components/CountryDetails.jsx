@@ -26,7 +26,7 @@ const CountryDetails = () => {
             <h1 className="text-display">{countryData?.name?.common}</h1>
             <h2 className="text-lg">{countryData?.name?.official}</h2>
           </div>
-          <div className="mb-x flex gap-6 md:gap-11 mb-8">
+          <div className="mb-x flex gap-6 md:gap-11 mb-8 px-[20px]">
             <div className="text-base bg-slate-300 rounded-xl p-4 flex gap-3 items-center">
               Population <span className="bg-black h-9 w-[1px]"></span>
               {countryData?.population}

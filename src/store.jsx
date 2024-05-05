@@ -20,7 +20,7 @@ const useCountriesSource = () => {
     setCurrentPage(currentPage);
   }
 
-  const { data: countries, isPending } = useQuery({
+  const { data: countries, isPending, isError } = useQuery({
     queryKey: ["countries"],
     queryFn: async function fetchCountries() {
       const response = await fetch("https://restcountries.com/v3.1/all");
@@ -104,16 +104,15 @@ const useCountriesSource = () => {
   return {
     state,
     isPending,
-    countries: countries || [],
-    // countriesList: sortedCountries,
+    isError,
     currentPage,
     postsPerPage,
     handlePagination,
     dispatch,
     setSearch,
+    countries: countries || [],
     pagedCountries,
     filteredCountries,
-    // sortedCountries
   };
 };
 

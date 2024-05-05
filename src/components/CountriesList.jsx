@@ -3,19 +3,21 @@ import CountryItem from "./CountryItem";
 import CountryItemSkeleton from "./CountryItemSkeleton";
 
 function CountriesList() {
-  const { pagedCountries, isPending, isPreviousData } = useCountries();
+  const { pagedCountries, isError } = useCountries();
 
   const countries = pagedCountries;
-  //TODO: handle error fron react Query
 
   let skeletons = [];
   for (let i = 0; i < 4; i++) {
     skeletons.push(<CountryItemSkeleton key={i} />);
   }
+  const isPending =true
+  if (isError) {
+    return (<p>Error fetching data</p>)
+  }
 
   return (
     <>
-      <small>{isPreviousData && "Previous Data"}</small>
       <table className="w-full mb-6">
         <thead className="border-b border-slate-300">
           <tr className="text-sm text-slate-200 text-center">
