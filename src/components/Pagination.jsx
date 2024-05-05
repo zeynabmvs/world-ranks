@@ -12,7 +12,7 @@ function Pagination() {
       list.push(i);
     }
     return list;
-  }, [filteredCountries]);
+  }, [filteredCountries, postsPerPage]);
 
   return (
     <div className="pagination flex justify-center gap-2 p-4">

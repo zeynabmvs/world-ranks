@@ -20,9 +20,8 @@ const useCountriesSource = () => {
     setCurrentPage(currentPage);
   }
 
-  const { data: countries, isPending, isPreviousData } = useQuery({
+  const { data: countries, isPending } = useQuery({
     queryKey: ["countries"],
-    keepPreviousData: true,
     queryFn: async function fetchCountries() {
       const response = await fetch("https://restcountries.com/v3.1/all");
       const result = await response.json();
@@ -69,6 +68,7 @@ const useCountriesSource = () => {
   ]);
 
   const sortedCountries = useMemo(() => {
+    // sort the filteredCountries array
     function getKey(obj, keyPath) {
       return keyPath.split(".").reduce((acc, curr) => {
         if (acc && acc[curr]) {
@@ -79,7 +79,7 @@ const useCountriesSource = () => {
       }, obj);
     }
 
-    return filteredCountries.sort(function (a, b) {
+    return [...filteredCountries].sort(function (a, b) {
       const valueA = getKey(a, state.sortBy);
       const valueB = getKey(b, state.sortBy);
 
@@ -105,7 +105,7 @@ const useCountriesSource = () => {
     state,
     isPending,
     countries: countries || [],
-    countriesList: sortedCountries,
+    // countriesList: sortedCountries,
     currentPage,
     postsPerPage,
     handlePagination,
@@ -113,8 +113,7 @@ const useCountriesSource = () => {
     setSearch,
     pagedCountries,
     filteredCountries,
-    isPreviousData,
-    sortedCountries
+    // sortedCountries
   };
 };
 
