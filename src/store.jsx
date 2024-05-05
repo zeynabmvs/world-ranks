@@ -12,9 +12,17 @@ const CountriesContext = createContext(null);
 
 const useCountriesSource = () => {
   const [state, dispatch] = useReducer(stateReducer, initialState);
+  
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, SetPostsPerPage] = useState(10);
 
-  const { data: countries, isPending } = useQuery({
+  function handlePagination(currentPage) {
+    setCurrentPage(currentPage);
+  }
+
+  const { data: countries, isPending, isPreviousData } = useQuery({
     queryKey: ["countries"],
+    keepPreviousData: true,
     queryFn: async function fetchCountries() {
       const response = await fetch("./all.json");
       const result = await response.json();
@@ -86,13 +94,26 @@ const useCountriesSource = () => {
     });
   }, [filteredCountries, state.sortBy]);
 
+  const pagedCountries = useMemo( () => {
+    const indexOfLastPost = currentPage * postsPerPage;
+
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    return sortedCountries?.slice(indexOfFirstPost, indexOfLastPost);
+  }, [postsPerPage, currentPage, sortedCountries] );
+
   return {
     state,
     isPending,
     countries,
     countriesList: sortedCountries,
+    currentPage,
+    postsPerPage,
+    handlePagination,
     dispatch,
     setSearch,
+    pagedCountries,
+    filteredCountries,
+    isPreviousData
   };
 };
 

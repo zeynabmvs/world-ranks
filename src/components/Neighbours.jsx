@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { neighboursData } from "../data/neighbours.js";
 
 const Neighbours = ({ code }) => {
-  const [neighbours, setNeighbours] = useState(neighboursData);
+  const [neighbours, setNeighbours] = useState([]);
   console.log(neighbours);
 
   return neighbours.length ? (

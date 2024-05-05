@@ -1,8 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
+import CountriesCount from "./CountriesCount";
 import CountriesList from "./CountriesList";
+import Pagination from "./Pagination";
 import Search from "./Search";
 import Sidebar from "./Sidebar";
-import CountriesCount from "./CountriesCount";
 
 const Home = () => {
   return (
@@ -14,7 +14,10 @@ const Home = () => {
       </div>
       <div className="flex flex-col md:flex-row gap-6">
         <Sidebar />
-        <CountriesList />
+        <div className="flex flex-col w-full">
+          <CountriesList />
+          <Pagination />
+        </div>
       </div>
     </div>
   );
