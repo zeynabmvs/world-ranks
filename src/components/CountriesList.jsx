@@ -16,7 +16,7 @@ function CountriesList() {
   return (
     <>
       <small>{isPreviousData && "Previous Data"}</small>
-      <table className="w-full">
+      <table className="w-full mb-6">
         <thead className="border-b border-slate-300">
           <tr className="text-sm text-slate-200 text-center">
             <th className="py-3">Flag</th>
