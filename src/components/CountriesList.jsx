@@ -3,7 +3,7 @@ import CountryItem from "./CountryItem";
 import CountryItemSkeleton from "./CountryItemSkeleton";
 
 function CountriesList() {
-  const { pagedCountries, isError } = useCountries();
+  const { pagedCountries, isError, isPending } = useCountries();
 
   const countries = pagedCountries;
 
@@ -11,9 +11,9 @@ function CountriesList() {
   for (let i = 0; i < 4; i++) {
     skeletons.push(<CountryItemSkeleton key={i} />);
   }
-  const isPending =true
+
   if (isError) {
-    return (<p>Error fetching data</p>)
+    return <p>Error fetching data</p>;
   }
 
   return (
