@@ -1,9 +1,9 @@
 export const initialState = {
   sortBy: "population",
   searchKeyword: "",
-  regions: [],
+  regions: ["asia"],
   independent: true,
-  unMember: true,
+  unMember: false,
 };
 
 export const stateReducer = (state, action) => {

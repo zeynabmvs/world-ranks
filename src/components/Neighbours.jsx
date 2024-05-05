@@ -26,7 +26,7 @@ const Neighbours = ({ borders }) => {
       {neighbours?.map((item, index) => {
         return (
           <li key={index} className="w-[80px]">
-            <Link to={`/country/${item?.name.common}`}>
+            <Link to={`/country/${item?.cca2}`}>
               <img src={item?.flags.svg} className="rounded-lg mb-3 " />
               <h3 className="text-sm">{item?.name.common}</h3>
             </Link>

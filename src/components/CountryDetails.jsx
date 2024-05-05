@@ -14,9 +14,10 @@ const CountryDetails = () => {
   const countryData = countries.find((c) => c.cca2 === code);
   return (
     <>
-      <Link to="/">Back </Link>
       {countryData ? (
-        <div className="bg-black border text-slate-100 border-slate-300 md:rounded-xl w-full md:w-[70%] lg:w-1/2 mx-auto flex items-center h-full flex-col mb-20 -m-12">
+        <div className="relative bg-black border text-slate-100 border-slate-300 md:rounded-xl w-full md:w-[70%] lg:w-1/2 mx-auto flex items-center h-full flex-col mb-20 -m-12">
+          <Link to="/" className="absolute left-3 top-3">Back </Link>
+
           <img
             src={countryData?.flags?.svg}
             className="w-[260px] -m-12 rounded-xl mb-8"

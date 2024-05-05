@@ -24,7 +24,7 @@ const useCountriesSource = () => {
     queryKey: ["countries"],
     keepPreviousData: true,
     queryFn: async function fetchCountries() {
-      const response = await fetch("./all.json");
+      const response = await fetch("https://restcountries.com/v3.1/all");
       const result = await response.json();
       return result;
     },
