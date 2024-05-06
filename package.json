@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://zeynabmvs.github.io/world-ranks",
+  "homepage": "https://zeynabmvs.github.io/world-ranks/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
