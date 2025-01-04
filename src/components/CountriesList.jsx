@@ -8,7 +8,7 @@ function CountriesList() {
   const countries = pagedCountries;
 
   let skeletons = [];
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 8; i++) {
     skeletons.push(<CountryItemSkeleton key={i} />);
   }
 

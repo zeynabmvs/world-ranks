@@ -14,7 +14,7 @@ const useCountriesSource = () => {
   const [state, dispatch] = useReducer(stateReducer, initialState);
   
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, SetPostsPerPage] = useState(25);
+  const [postsPerPage, SetPostsPerPage] = useState(8);
 
   const handlePagination = useCallback((currentPage)=>{
     setCurrentPage(currentPage);
