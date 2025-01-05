@@ -1,6 +1,6 @@
 # World Rank Project
 
-This project is a solution to the "World Rank" challenge on the [DevChallenges](https://devchallenges.io/). It is a web application that displays a list of countries along with their rankings and other details. it has the ability to filter and sort countries.
+World Ranks is a web application that displays a list of countries along with their rankings, population, area, and other details. This project is a solution to the "World Rank" challenge on [DevChallenges](https://devchallenges.io/). It features the ability to filter and sort countries, providing users with an interactive and intuitive way to explore global statistics. Built with HTML, CSS, and JavaScript, World Ranks showcases clean design and responsive functionality.
 
 Challenge Link: https://devchallenges.io/challenge/country-page
 
@@ -9,8 +9,11 @@ Live site: https://zeynabmvs.github.io/world-ranks/
 Github Repo: https://github.com/zeynabmvs/world-ranks
 
 ## Screenshots
-![Screenshot 1](/screenshots/desktop.jpeg)
-![Screenshot 2](/screenshots/mobile.jpeg)
+![Screenshot](./public/screenshots/screenshot.jpg)
+*The main page with the list of all countries and filters.*
+
+![Screenshot Detail page](./public/screenshots/screenshot-single.jpg)
+*The country detail page.*
 
 
 ## Built with
